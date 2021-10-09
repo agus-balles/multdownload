@@ -5,6 +5,10 @@ import os
 import time
 from sys import stdin
 from math import ceil
+from tqdm import tqdm 
+import logging
+
+logging.basicConfig(level=os.environ.get("LOGLEVEL", "DEBUG"))
 
 def get_size_afk(url):
     response = requests.head(url)
