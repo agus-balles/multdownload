@@ -5,7 +5,7 @@ import os
 import time
 from sys import stdin
 from math import ceil
-from tqdm import tqdm 
+#from tqdm import tqdm 
 import logging
 
 logging.basicConfig(level=os.environ.get("LOGLEVEL", "DEBUG"))
