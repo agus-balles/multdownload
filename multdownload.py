@@ -3,7 +3,7 @@ import concurrent.futures
 import requests
 import os
 import time
-from sys import stdin
+from sys import stdin,stdout
 from math import ceil
 #from tqdm import tqdm 
 import logging
@@ -32,6 +32,7 @@ if piped==False:
     else:
         chunk=int(chunkStr.strip()) * 1048576
     filesAtATime=int(input("number of files to download at once(max 15): ").strip().strip("'").strip('"'))
+    print("Downloading...")
 else:
     OUTPUT = URL.split("/")[-1]
     chunk=int(ceil(get_size_afk(URL)/15))
