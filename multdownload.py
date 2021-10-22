@@ -3,7 +3,7 @@ import concurrent.futures
 import requests
 import os
 import time
-from sys import stdin,stdout
+from sys import stdin, argv
 from math import ceil
 #from tqdm import tqdm 
 import logging
@@ -22,7 +22,11 @@ if not stdin.isatty():
     URL=stdin.read().strip().strip('"')
     piped=True
 
-if piped==False:
+if len(argv)>1:
+    URL=argv[1]
+    
+
+if piped==False and len(argv)==1:
     URL = input("URL: ").strip()
     OUTPUT = input("Name: ").strip().strip("'").strip('"')
     chunkStr=input("Chunk size(KB/MB): ")
@@ -38,6 +42,7 @@ else:
     OUTPUT = URL.split("/")[-1]
     chunk=int(ceil(get_size_afk(URL)/15))
     filesAtATime=15
+    print("Downloading...")
 if filesAtATime not in range(1,16):
     filesAtATime = 15
 if filesAtATime >15:
