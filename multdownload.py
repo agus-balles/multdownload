@@ -64,7 +64,7 @@ def download_range(url, start, end, output):
 
 
 async def download(executor, url, output, chunk_size=10000000):
-    loop = asyncio.get_event_loop()
+    loop = asyncio.get_running_loop()
 
     file_size = await get_size(url)
     chunks = range(0, file_size, chunk_size)
@@ -95,7 +95,7 @@ async def download(executor, url, output, chunk_size=10000000):
 
 if __name__ == '__main__':
     executor = concurrent.futures.ThreadPoolExecutor(max_workers=filesAtATime)
-    loop = asyncio.get_event_loop()
+    loop = asyncio.get_event_loop_policy().get_event_loop()
 
 
     try:
